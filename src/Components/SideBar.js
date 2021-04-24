@@ -49,7 +49,7 @@ const SideBar = () => {
     <Grid container spacing={2}>
       <Grid item md={4} style={{ marginLeft: "20px" }}>
         <Paper>
-          <FormLabel style={{margin: "10px 35px"}} color="primary ">Filter By</FormLabel>
+          <FormLabel style={{margin: "10px 35px"}} color="primary ">Search For</FormLabel>
           <RadioGroup
             name="spacing"
             aria-label="spacing"
