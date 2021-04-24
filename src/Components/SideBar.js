@@ -63,7 +63,7 @@ const SideBar = () => {
                 value={value}
                 control={<Radio />}
                 label={value}
-                style={{margin: "-5px 20px"}}
+                style={{margin: "-25px 20px"}}
               />
             ))}
           </RadioGroup>
