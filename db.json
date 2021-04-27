@@ -9,12 +9,12 @@
       {
         "From": "initial 1",
         "To": "product_page",
-        "Weight": 5
+        "Weight": 4
       },
       {
         "From": "initial 1",
         "To": "search",
-        "Weight": 7
+        "Weight": 8
       },
       {
         "From": "signup_form",
@@ -96,19 +96,19 @@
   "signup_form": [
     [
       {
-        "From": "demo",
+        "From": "initial 2",
         "To": "signup_form",
+        "Weight": 8
+      },
+      {
+        "From": "initial 2",
+        "To": "product_page",
         "Weight": 4
       },
       {
-        "From": "demo",
-        "To": "product_page",
-        "Weight": 5
-      },
-      {
-        "From": "demo",
+        "From": "initial 2",
         "To": "search",
-        "Weight": 7
+        "Weight": 4
       },
       {
         "From": "signup_form",
