@@ -96,17 +96,17 @@
   "signup_form": [
     [
       {
-        "From": "initial 2",
+        "From": "demo",
         "To": "signup_form",
         "Weight": 4
       },
       {
-        "From": "initial 2",
+        "From": "demo",
         "To": "product_page",
         "Weight": 5
       },
       {
-        "From": "initial 2",
+        "From": "demo",
         "To": "search",
         "Weight": 7
       },
