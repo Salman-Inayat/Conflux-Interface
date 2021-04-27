@@ -29,9 +29,9 @@ const SideBar = () => {
     "view_more_details",
   ];
 
-  useEffect(() => {
-    console.log("final data \n" + data);
-  }, [data]);
+  // useEffect(() => {
+  //   // console.log(data);
+  // }, [data]);
 
   const chartData = [
     ["From", "To", "Weight"],
@@ -64,7 +64,7 @@ const SideBar = () => {
     const clicked_event = event.target.value;
     setLabelValue(clicked_event);
     setDemo("clicked");
-    console.log("chart data\n" + chartData) 
+
     axios
       .get("http://localhost:3001/" + clicked_event)
       .then(function (response) {
@@ -79,6 +79,8 @@ const SideBar = () => {
         }
 
         final_data  = data_keys.concat(data_values)
+        // final_data = data_values
+        final_data[0] = ["From", "To", "Weight"]
         setData(final_data)
 
       });
