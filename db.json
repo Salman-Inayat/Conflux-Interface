@@ -1,0 +1,190 @@
+{
+  "confirm_email": [
+    [
+      {
+        "From": "initial 1",
+        "To": "signup_form",
+        "Weight": 4
+      },
+      {
+        "From": "initial 1",
+        "To": "product_page",
+        "Weight": 5
+      },
+      {
+        "From": "initial 1",
+        "To": "search",
+        "Weight": 7
+      },
+      {
+        "From": "signup_form",
+        "To": "landing",
+        "Weight": 2
+      },
+      {
+        "From": "signup_form",
+        "To": "imput_email",
+        "Weight": 1
+      },
+      {
+        "From": "signup_form",
+        "To": "view_more_details",
+        "Weight": 1
+      },
+      {
+        "From": "product_page",
+        "To": "apply_filters",
+        "Weight": 1
+      },
+      {
+        "From": "product_page",
+        "To": "payment_info",
+        "Weight": 3
+      },
+      {
+        "From": "product_page",
+        "To": "view_more_details",
+        "Weight": 1
+      },
+      {
+        "From": "search",
+        "To": "payment_info",
+        "Weight": 1
+      },
+      {
+        "From": "search",
+        "To": "view_more_details",
+        "Weight": 1
+      },
+      {
+        "From": "search",
+        "To": "payment_success",
+        "Weight": 2
+      },
+      {
+        "From": "search",
+        "To": "landing",
+        "Weight": 3
+      },
+      {
+        "From": "landing",
+        "To": "apply_filters",
+        "Weight": 1
+      },
+      {
+        "From": "landing",
+        "To": "input_password",
+        "Weight": 3
+      },
+      {
+        "From": "payment_info",
+        "To": "input_password",
+        "Weight": 3
+      },
+      {
+        "From": "payment_info",
+        "To": "input_email",
+        "Weight": 3
+      },
+      {
+        "From": "view_more_details",
+        "To": "apply_filters",
+        "Weight": 1
+      }
+    ]
+  ],
+  "signup_form": [
+    [
+      {
+        "From": "initial 2",
+        "To": "signup_form",
+        "Weight": 4
+      },
+      {
+        "From": "initial 2",
+        "To": "product_page",
+        "Weight": 5
+      },
+      {
+        "From": "initial 2",
+        "To": "search",
+        "Weight": 7
+      },
+      {
+        "From": "signup_form",
+        "To": "landing",
+        "Weight": 2
+      },
+      {
+        "From": "signup_form",
+        "To": "imput_email",
+        "Weight": 1
+      },
+      {
+        "From": "signup_form",
+        "To": "view_more_details",
+        "Weight": 1
+      },
+      {
+        "From": "product_page",
+        "To": "apply_filters",
+        "Weight": 1
+      },
+      {
+        "From": "product_page",
+        "To": "payment_info",
+        "Weight": 3
+      },
+      {
+        "From": "product_page",
+        "To": "view_more_details",
+        "Weight": 1
+      },
+      {
+        "From": "search",
+        "To": "payment_info",
+        "Weight": 1
+      },
+      {
+        "From": "search",
+        "To": "view_more_details",
+        "Weight": 1
+      },
+      {
+        "From": "search",
+        "To": "payment_success",
+        "Weight": 2
+      },
+      {
+        "From": "search",
+        "To": "landing",
+        "Weight": 3
+      },
+      {
+        "From": "landing",
+        "To": "apply_filters",
+        "Weight": 1
+      },
+      {
+        "From": "landing",
+        "To": "input_password",
+        "Weight": 3
+      },
+      {
+        "From": "payment_info",
+        "To": "input_password",
+        "Weight": 3
+      },
+      {
+        "From": "payment_info",
+        "To": "input_email",
+        "Weight": 3
+      },
+      {
+        "From": "view_more_details",
+        "To": "apply_filters",
+        "Weight": 1
+      }
+    ]
+  ]
+}
