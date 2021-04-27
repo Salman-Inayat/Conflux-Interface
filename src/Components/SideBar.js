@@ -13,7 +13,6 @@ const SideBar = () => {
   const [labelvalue, setLabelValue] = useState("confirm_email");
   const [data, setData] = useState([[]]);
   const [demo, setDemo] = useState();
-  const [demoData, setDemoData] = useState([]);
 
   const labels = [
     "confirm_email",
@@ -31,8 +30,8 @@ const SideBar = () => {
   ];
 
   useEffect(() => {
-    console.log(demoData);
-  }, [setDemoData]);
+    console.log("final data \n" + data);
+  }, [data]);
 
   const chartData = [
     ["From", "To", "Weight"],
@@ -57,36 +56,33 @@ const SideBar = () => {
     ["view_more_details", "apply_filters", 1],
   ];
 
-    let data_keys = []
+    let data_keys = [[]]
     let data_values = []
-    let keys_array = []
     let final_data = []
 
   function handleChange(event) {
     const clicked_event = event.target.value;
     setLabelValue(clicked_event);
     setDemo("clicked");
-
+    console.log("chart data\n" + chartData) 
     axios
       .get("http://localhost:3001/" + clicked_event)
       .then(function (response) {
         let i;
         let response_data = response.data;
+
         const parsed_data = JSON.parse(JSON.stringify(response_data));
-        data_keys = Object.keys(parsed_data[0][0])
+        data_keys[0].push(Object.keys(parsed_data[0][0]))
 
         for (i = 0; i < parsed_data[0].length; i++) {
-          data_values.push(Object.values(parsed_data[0][0]))
+          data_values.push(Object.values(parsed_data[0][i]))
         }
 
-        // for (i = 0; i < data_keys.length; i++){
-        //   keys_array = (data_keys[i])
-        // }
-
         final_data  = data_keys.concat(data_values)
+        setData(final_data)
 
-        console.log(final_data)  
       });
+      
 
     //   function arrayToJSONObject (arr){
     //     var keys = arr[0];
@@ -143,7 +139,7 @@ const SideBar = () => {
         </Paper>
       </Grid>
       <Grid item md={7}>
-        {demo ? <SankeyChart text={final_data} /> : <SankeyChart text={chartData} />}
+        {demo ? <SankeyChart text={data} /> : <SankeyChart text={chartData} />}
       </Grid>
     </Grid>
   );
