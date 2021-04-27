@@ -29,10 +29,6 @@ const SideBar = () => {
     "view_more_details",
   ];
 
-  // useEffect(() => {
-  //   // console.log(data);
-  // }, [data]);
-
   const chartData = [
     ["From", "To", "Weight"],
     ["demo", "signup_form", 4],
@@ -79,13 +75,11 @@ const SideBar = () => {
         }
 
         final_data  = data_keys.concat(data_values)
-        // final_data = data_values
         final_data[0] = ["From", "To", "Weight"]
         setData(final_data)
 
       });
       
-
     //   function arrayToJSONObject (arr){
     //     var keys = arr[0];
     //     var newArr = arr.slice(1, arr.length);
@@ -116,10 +110,10 @@ const SideBar = () => {
 
   return (
     <Grid container spacing={2}>
-      <Grid item md={4} style={{ marginLeft: "20px" }}>
-        <Paper>
+      <Grid item md={3} style={{ marginLeft: "50px"}}>
+        <Paper style={{backgroundColor:'#cccccc',  padding: '20px ' }}>
           <FormLabel style={{ margin: "10px 35px" }} color="primary ">
-            Search For
+            Select an Event
           </FormLabel>
           <RadioGroup
             name="spacing"
@@ -134,13 +128,16 @@ const SideBar = () => {
                 value={value}
                 control={<Radio />}
                 label={value}
-                style={{ margin: "-5px 20px" }}
+                style={{ margin: "-5px 20px", color:'black' }}
               />
             ))}
           </RadioGroup>
         </Paper>
       </Grid>
-      <Grid item md={7}>
+      <Grid item md={1}>
+
+      </Grid>
+      <Grid item md={7} style={{padding:'50px'}}>
         {demo ? <SankeyChart text={data} /> : <SankeyChart text={chartData} />}
       </Grid>
     </Grid>
