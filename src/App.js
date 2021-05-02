@@ -10,14 +10,23 @@ import {
 } from "@apollo/client";
 // import Customer_Card from "./Components/Customer_Card"
 
+const defaultOptions = {
+  watchQuery: {
+    fetchPolicy: 'no-cache',
+    errorPolicy: 'ignore',
+  },
+  query: {
+    fetchPolicy: 'no-cache',
+    errorPolicy: 'all',
+  },
+}
+
 const createApolloClient = () => {
   return new ApolloClient({
     link: new HttpLink({
       uri: "http://localhost:8080/v1/graphql",
-      // // headers: {
-      //   Authorization: `Bearer ${authToken}`
-      // // }
     }),
+    defaultOptions: defaultOptions,
     cache: new InMemoryCache(),
   });
 };
