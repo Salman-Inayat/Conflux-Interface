@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-// import {Grid, Radio, RadioGroup, FormLabel} from '@material-ui/core';
 import Grid from "@material-ui/core/Grid";
 import FormLabel from "@material-ui/core/FormLabel";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
@@ -7,8 +6,6 @@ import RadioGroup from "@material-ui/core/RadioGroup";
 import Radio from "@material-ui/core/Radio";
 import Paper from "@material-ui/core/Paper";
 import SankeyChart from "./SankeyChart";
-// import axios from "axios";
-// import { gql } from "@apollo/client";
 import { gql, useLazyQuery } from "@apollo/client";
 
 const GET_CONFIRM_EMAIL = gql`
@@ -33,21 +30,23 @@ const GET_SEARCH = gql`
 
 const SideBar = () => {
   let data_keys = [[]];
-  let data_values = [];
+  let data_values = [[]];
   let final_data = [];
   const [labelvalue, setLabelValue] = useState("");
   const [demo, setDemo] = useState();
-  const [finalData, setFinalData] = useState([[]]);
+  const [finalData, setFinalData] = useState([]);
 
   const [getConfirmEmail, { c_loading, c_error, c_data }] = useLazyQuery(
     GET_CONFIRM_EMAIL, {
       onCompleted: (somedata) => {
         let response_data = somedata.confirm_email;
         const parsed_data = JSON.parse(JSON.stringify(response_data));
+        
         data_values = parsed_data.map((x) => Object.values(x));
         for (let x = 0; x < data_values.length; x++) {
-          data_values[x].splice([0], 1);
+          data_values[x].splice([3], 1);
         }
+        console.log(data_values)
   
         final_data = data_keys.concat(data_values);
         final_data[0] = ["From", "To", "Weight"];
@@ -62,23 +61,25 @@ const SideBar = () => {
         let response_data = somedata.search;
         const parsed_data = JSON.parse(JSON.stringify(response_data));
         data_values = parsed_data.map((x) => Object.values(x));
+
         for (let x = 0; x < data_values.length; x++) {
-          data_values[x].splice([0], 1);
+          data_values[x].splice([3], 1);
         }
   
         final_data = data_keys.concat(data_values);
         final_data[0] = ["From", "To", "Weight"];
         setFinalData(final_data);
+        console.log(final_data)
       },
     }
   );
 
   const labels = [
     "confirm_email",
+    "search",
     "signup_form",
     "payment_success",
     "product_page",
-    "search",
     "landing",
     "input_email",
     "signup_button",
@@ -113,13 +114,12 @@ const SideBar = () => {
   useEffect(() => {
     return () => {
     };
-  }, [finalData]);
+  }, [finalData, getSearch, getConfirmEmail]);
 
   function handleChange(event) {
     const clicked_event = event.target.value;
     setLabelValue(clicked_event);
     setDemo("clicked");
-    // getServerData();
 
     switch (event.target.value) {
       case ("confirm_email"):
@@ -132,14 +132,6 @@ const SideBar = () => {
         console.log("select correct option")
     }
   }
-
-  // if (loading) {
-  //   return <div>Loading...</div>;
-  // }
-  // if (error) {
-  //   console.error(error);
-  //   return <div style={{ marginLeft: "30px" }}>Error!</div>;
-  // }
 
   return (
     <Grid container spacing={2}>
