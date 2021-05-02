@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
 import Grid from "@material-ui/core/Grid";
 import FormLabel from "@material-ui/core/FormLabel";
@@ -46,7 +47,6 @@ const SideBar = () => {
         for (let x = 0; x < data_values.length; x++) {
           data_values[x].splice([3], 1);
         }
-        console.log(data_values)
   
         final_data = data_keys.concat(data_values);
         final_data[0] = ["From", "To", "Weight"];
@@ -69,7 +69,6 @@ const SideBar = () => {
         final_data = data_keys.concat(data_values);
         final_data[0] = ["From", "To", "Weight"];
         setFinalData(final_data);
-        console.log(final_data)
       },
     }
   );
@@ -111,11 +110,6 @@ const SideBar = () => {
     ["view_more_details", "apply_filters", 1],
   ];
 
-  useEffect(() => {
-    return () => {
-    };
-  }, [finalData, getSearch, getConfirmEmail]);
-
   function handleChange(event) {
     const clicked_event = event.target.value;
     setLabelValue(clicked_event);
@@ -137,7 +131,7 @@ const SideBar = () => {
     <Grid container spacing={2}>
       <Grid item md={3} style={{ marginLeft: "50px" }}>
         <Paper style={{ backgroundColor: "#cccccc", padding: "20px " }}>
-          <FormLabel style={{ margin: "10px 35px" }} color="primary ">
+          <FormLabel style={{ margin: "10px 35px" }}>
             Select an Event
           </FormLabel>
           <RadioGroup
@@ -145,7 +139,7 @@ const SideBar = () => {
             aria-label="spacing"
             value={labelvalue}
             onChange={handleChange}
-            column
+            column="true"
           >
             {labels.map((value) => (
               <FormControlLabel
