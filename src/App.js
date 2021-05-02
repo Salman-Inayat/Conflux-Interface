@@ -8,7 +8,6 @@ import {
   InMemoryCache,
   HttpLink,
 } from "@apollo/client";
-// import Customer_Card from "./Components/Customer_Card"
 
 const defaultOptions = {
   watchQuery: {
@@ -36,18 +35,12 @@ const App = () => {
   return (
     <ApolloProvider client={client}>
       <Grid container spacing={2}>
-        <Grid md={12} xs={12}>
+        <Grid  item md={12} xs={12}>
           <Header />
         </Grid>
-        <Grid md={12}>
+        <Grid item  md={12}>
           <SideBar />
         </Grid>
-        {/* <Grid md={8}>
-        <SankeyChart />
-        </Grid> */}
-        {/* <Grid md={12}>
-        <Customer_Card/>
-        </Grid> */}
       </Grid>
     </ApolloProvider>
   );
