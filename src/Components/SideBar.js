@@ -38,16 +38,17 @@ const SideBar = () => {
   const [finalData, setFinalData] = useState([]);
 
   const [getConfirmEmail, { c_loading, c_error, c_data }] = useLazyQuery(
-    GET_CONFIRM_EMAIL, {
+    GET_CONFIRM_EMAIL,
+    {
       onCompleted: (somedata) => {
         let response_data = somedata.confirm_email;
         const parsed_data = JSON.parse(JSON.stringify(response_data));
-        
+
         data_values = parsed_data.map((x) => Object.values(x));
         for (let x = 0; x < data_values.length; x++) {
           data_values[x].splice([3], 1);
         }
-  
+
         final_data = data_keys.concat(data_values);
         final_data[0] = ["From", "To", "Weight"];
         setFinalData(final_data);
@@ -55,23 +56,22 @@ const SideBar = () => {
     }
   );
 
-  const [getSearch, { s_loading, s_error, s_data }] = useLazyQuery(
-    GET_SEARCH,{
-      onCompleted: (somedata) => {
-        let response_data = somedata.search;
-        const parsed_data = JSON.parse(JSON.stringify(response_data));
-        data_values = parsed_data.map((x) => Object.values(x));
+  const [getSearch, { s_loading, s_error, s_data }] = useLazyQuery(GET_SEARCH, {
+    onCompleted: (somedata) => {
+      let response_data = somedata.search;
+      const parsed_data = JSON.parse(JSON.stringify(response_data));
+      data_values = parsed_data.map((x) => Object.values(x));
 
-        for (let x = 0; x < data_values.length; x++) {
-          data_values[x].splice([3], 1);
-        }
-  
-        final_data = data_keys.concat(data_values);
-        final_data[0] = ["From", "To", "Weight"];
-        setFinalData(final_data);
-      },
-    }
-  );
+      for (let x = 0; x < data_values.length; x++) {
+        data_values[x].splice([3], 1);
+      }
+
+      final_data = data_keys.concat(data_values);
+      final_data[0] = ["From", "To", "Weight"];
+      console.log(final_data)
+      setFinalData(final_data);
+    },
+  });
 
   const labels = [
     "confirm_email",
@@ -90,6 +90,8 @@ const SideBar = () => {
 
   const chartData = [
     ["From", "To", "Weight"],
+
+    
     ["demo", "signup_form", 4],
     ["demo", "product_page", 5],
     ["demo", "search", 7],
@@ -116,14 +118,14 @@ const SideBar = () => {
     setDemo("clicked");
 
     switch (event.target.value) {
-      case ("confirm_email"):
+      case "confirm_email":
         getConfirmEmail(event.target.value);
-        break
-      case ("search"):
+        break;
+      case "search":
         getSearch(event.target.value);
         break;
       default:
-        console.log("select correct option")
+        console.log("select correct option");
     }
   }
 
@@ -131,9 +133,7 @@ const SideBar = () => {
     <Grid container spacing={2}>
       <Grid item md={3} style={{ marginLeft: "50px" }}>
         <Paper style={{ backgroundColor: "#cccccc", padding: "20px " }}>
-          <FormLabel style={{ margin: "10px 35px" }}>
-            Select an Event
-          </FormLabel>
+          <FormLabel style={{ margin: "10px 35px" }}>Select an Event</FormLabel>
           <RadioGroup
             name="spacing"
             aria-label="spacing"
