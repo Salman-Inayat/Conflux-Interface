@@ -2,7 +2,6 @@ import React from "react";
 import SideBar from "./Components/SideBar";
 import Grid from "@material-ui/core/Grid";
 import Header from "./Components/Header";
-import Customer_Card from "./Components/Customer_Card"
 
 import {
   ApolloClient,
@@ -43,9 +42,6 @@ const App = () => {
         <Grid item  md={12}>
           <SideBar />
         </Grid>
-      </Grid>
-      <Grid item md={12}>
-<Customer_Card />
       </Grid>
     </ApolloProvider>
   );
