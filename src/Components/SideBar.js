@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
+import ReactDOM from "react-dom"
 import Grid from "@material-ui/core/Grid";
 import FormLabel from "@material-ui/core/FormLabel";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
@@ -9,7 +10,7 @@ import Paper from "@material-ui/core/Paper";
 import SankeyChart from "./SankeyChart";
 import { gql, useLazyQuery } from "@apollo/client";
 
-const GET_CONFIRM_EMAIL = gql`
+export const GET_CONFIRM_EMAIL = gql`
   query {
     confirm_email {
       From
@@ -19,7 +20,7 @@ const GET_CONFIRM_EMAIL = gql`
   }
 `;
 
-const GET_SEARCH = gql`
+export const GET_SEARCH = gql`
   query {
     search {
       From
@@ -53,8 +54,16 @@ const SideBar = () => {
         final_data[0] = ["From", "To", "Weight"];
         setFinalData(final_data);
       },
+      onError: () => {
+        var myAnchor = document.getElementById("error-div");
+        myAnchor.style.display = "block"
+      }
     }
   );
+
+  if (c_data){
+    console.log('loaded')
+  }
 
   const [getSearch, { s_loading, s_error, s_data }] = useLazyQuery(GET_SEARCH, {
     onCompleted: (somedata) => {
@@ -68,10 +77,14 @@ const SideBar = () => {
 
       final_data = data_keys.concat(data_values);
       final_data[0] = ["From", "To", "Weight"];
-      console.log(final_data)
       setFinalData(final_data);
     },
+      onError: () => {
+        var myAnchor = document.getElementById("error-div");
+        myAnchor.style.display = "block"
+      }
   });
+
 
   const labels = [
     "confirm_email",
@@ -90,8 +103,6 @@ const SideBar = () => {
 
   const chartData = [
     ["From", "To", "Weight"],
-
-    
     ["demo", "signup_form", 4],
     ["demo", "product_page", 5],
     ["demo", "search", 7],
@@ -161,6 +172,7 @@ const SideBar = () => {
           <SankeyChart text={chartData} />
         )}
       </Grid>
+      <p id="error-div" style={{display: 'none'}}>Error</p>
     </Grid>
   );
 };
