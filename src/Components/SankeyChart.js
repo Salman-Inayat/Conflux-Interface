@@ -21,7 +21,7 @@ const SankeyChart = (props) => {
         //   },
         // }}
         data={props.text}
-        rootProps={{ "data-testid": "2" }}
+        // rootProps={{ "data-testid": "2" }}
       />
     </Grid>
   );
