@@ -1,12 +1,8 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import { render, fireEvent, cleanup , waitFor} from "@testing-library/react";
 import SideBar from "./SideBar";
-import { GET_SEARCH, GET_CONFIRM_EMAIL } from "./SideBar";
-import TestRenderer from "react-test-renderer";
-import { MockedProvider, mockSingleLink } from "@apollo/client/testing";
-import { createMockClient } from 'mock-apollo-client';
-import { gql, useLazyQuery, InMemoryCache} from "@apollo/client";
+import { GET_SEARCH} from "./SideBar";
+import { MockedProvider} from "@apollo/client/testing";
 import App from "../App"
 
 afterEach(cleanup);
