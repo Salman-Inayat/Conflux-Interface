@@ -92,7 +92,7 @@ export const GET_SIGNUP_BUTTON = gql`
 
 export const GET_INPUT_PASSWORD = gql`
   query {
-    inout_password {
+    input_password {
       From
       To
       Weight
@@ -112,7 +112,7 @@ export const GET_APPLY_FILTERS = gql`
 
 export const GET_PAYMENT_INFO = gql`
   query {
-    payment_infi {
+    payment_info {
       From
       To
       Weight
@@ -485,7 +485,7 @@ const SideBar = () => {
       case "payment_info":
         getPaymentInfo(event.target.value);
         break;
-      case "view_moreDetails":
+      case "view_more_details":
         getViewMoreDetails(event.target.value);
         break;
       default:
