@@ -21,7 +21,7 @@ it("Check if any radio button is checked without triggering any event", () => {
   expect(r_button2).not.toBeChecked();
 });
 
-it("Test if any radio button is checked when a button is clicked", () => {
+it("Test if a radio button is checked when it is clicked", () => {
   const { getByLabelText } = render(<SideBar />);
   const search_button = getByLabelText("search");
   fireEvent.click(search_button, { target: { checked: true }});
